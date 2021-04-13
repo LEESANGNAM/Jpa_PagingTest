@@ -3,7 +3,7 @@ package paging.pagingTest.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import paging.pagingTest.GetId;
+import paging.pagingTest.domain.GetId;
 
 import java.util.List;
 
