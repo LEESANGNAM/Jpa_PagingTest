@@ -17,7 +17,18 @@
         <td th:text="${board.title}"></td>
     </tr>
 </table>
-
+<table border="1" th:if="${#lists.size(boardList)!=0}">
+    <tr>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+    </tr>
+    <tr>
+        <td>Test</td>
+        <td>Test</td>
+        <td>Test</td>
+    </tr>
+</table>
 <nav style="text-align: center;">
     <ul
         th:with="start=${T(Math).floor(boardList.number/10)*10 + 1},
