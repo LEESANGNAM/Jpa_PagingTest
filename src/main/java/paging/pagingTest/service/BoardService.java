@@ -1,6 +1,9 @@
 package paging.pagingTest.service;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -11,6 +14,7 @@ import paging.pagingTest.domain.Board;
 import paging.pagingTest.repository.BoardRepository;
 
 @Service
+@Slf4j
 public class BoardService {
     private BoardRepository boardRepository;
 
