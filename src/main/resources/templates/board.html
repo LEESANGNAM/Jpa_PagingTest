@@ -56,5 +56,18 @@
     </tr>
     </table>
 </div>
+<!--데이터 3개만 가져오기-->
+<table border="1" >
+    <tr>
+        <th>글 번호</th>
+        <th>글쓴이</th>
+        <th>글 제목</th>
+    </tr>
+    <tr th:each="boards : ${findTop3}">
+        <td th:text="${boards.id}"></td>
+        <td th:text="${boards.name}"></td>
+        <td th:text="${boards.title}"></td>
+    </tr>
+</table>
 </body>
 </html>

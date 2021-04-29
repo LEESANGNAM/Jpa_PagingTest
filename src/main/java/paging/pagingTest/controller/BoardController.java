@@ -21,10 +21,15 @@ public class BoardController {
 
     @GetMapping("/boards")
     public String boardView(@PageableDefault Pageable pageable, Model model) {
+
         Page<Board> boardList = boardService.getBoardList(pageable);
         model.addAttribute("boardList", boardList);
+
         List<Board> getBoardList = boardList.getContent();
         model.addAttribute("getBoardList",getBoardList);//list size가져옴, list size확인용
+
+        List<Board> getTop = boardService.findTop3Board();
+        model.addAttribute("findTop3",getTop);
         return "board";
     }
 }

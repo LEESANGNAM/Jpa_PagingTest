@@ -31,6 +31,10 @@ public class BoardService {
         List<GetId> getId = boardRepository.findByTitle(title);
         return getId;
     }
+    public List<Board> findTop3Board(){
+        List<Board> getTop = boardRepository.findTop3ByOrderByIdDesc();
+        return getTop;
+    }
     /*
     public List<Long> findBoardTitles(String title){
         List<Board> findBoardTitle = boardRepository.findByTitle(title);
