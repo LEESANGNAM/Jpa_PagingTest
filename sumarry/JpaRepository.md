@@ -19,8 +19,7 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
 ### 쿼리 메소드
 + 위에 기본적으로 제공하는 것이 아닌경우에는 규칙에 맞는 메서드를 추가하면된다
-+ findBy로 시작 : 쿼리 요청
-+ countBy로 시작 : 쿼리 결과 레코드 수를 요청
++ findBy... : 쿼리 요청
 + ex
 ```java
     List<GetId> findByTitle(String title);//String title에 들어가는것만 가지고옴
