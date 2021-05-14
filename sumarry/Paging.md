@@ -99,4 +99,54 @@ public class BoardController {
     + 39~43(다음페이지 이동)
         + 39행은 이전페이지와 같이 마지막 페이지면 li태그를 disabled상태로 만든다
         + 40행은 해당 페이지가 마지막페이지면 #을 그게 아니면 다음페이지의 번호를 보낸다 page의 index는 0부터 시작하기에 +2를 해준다.+1을 하면 다음페이지로 이동이 안되고 같은 페이지를 반복한다
-### 특정 데이터 가져오기
+___
+___
+### 특정 조건 데이터 가져오기
+### BoardRepository
+```java
+public interface BoardRepository extends JpaRepository<Board, Long> {
+    List<Board> findTop3ByOrderByIdDesc();//데이터3개만 가져오기
+}
+```
++ 쿼리 메소드로 게시글중 최신 게시글 3개를 가져오는 메소드를 만든다
+### BoardService
+```java
+@Service
+public class BoardService {
+    private BoardRepository boardRepository;
+
+    public BoardService(BoardRepository boardRepository){
+        this.boardRepository = boardRepository;
+    }
+    public List<Board> findTop3Board(){
+        List<Board> getTop = boardRepository.findTop3ByOrderByIdDesc();
+        return getTop;
+    }
+
+}
+```
++ repository에서 만든 쿼리 메소드를 사용하여 getTop에 값을 저장후 getTop를 return한다
+### BoardController
+```java
+@Controller
+public class BoardController {
+    private BoardService boardService;
+
+    public BoardController(BoardService boardService) {this.boardService = boardService;}
+
+    @GetMapping("/boards")
+    public String boardView(@PageableDefault Pageable pageable, Model model) {
+        List<Board> getTop = boardService.findTop3Board();
+        model.addAttribute("findTop3",getTop);
+        return "board";
+    }
+}
+```
++ getTop에 최신 게시글을 저장후 model에 findTop3으로 이름을 주고 view에 뿌린다
+![데이터 3개](https://user-images.githubusercontent.com/76415175/118254584-36373e80-b4e6-11eb-94c7-dd94c08185ad.PNG)
++ thymeleaf의 반복문을 사용해 findTop3의 값을 반복하여 출력한다
++ 출력결과   
+![출력결과](https://user-images.githubusercontent.com/76415175/118255610-6d5a1f80-b4e7-11eb-8799-8f8a6dbdc720.PNG)
++ 전체 데이터수  
+![전체 게시글](https://user-images.githubusercontent.com/76415175/118255731-8f53a200-b4e7-11eb-90c3-3cb285641b32.PNG)
++ id를 기준으로 최신 게시글 3개가 나오는걸 알수 있다
