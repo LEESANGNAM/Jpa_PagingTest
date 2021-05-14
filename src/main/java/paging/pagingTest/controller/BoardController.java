@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import paging.pagingTest.domain.Board;
+import paging.pagingTest.domain.GetId;
 import paging.pagingTest.service.BoardService;
 import java.util.*;
 
@@ -15,9 +16,7 @@ import java.util.*;
 public class BoardController {
     private BoardService boardService;
 
-    public BoardController(BoardService boardService) {
-        this.boardService = boardService;
-    }
+    public BoardController(BoardService boardService) {this.boardService = boardService;}
 
     @GetMapping("/boards")
     public String boardView(@PageableDefault Pageable pageable, Model model) {
@@ -30,6 +29,11 @@ public class BoardController {
 
         List<Board> getTop = boardService.findTop3Board();
         model.addAttribute("findTop3",getTop);
+
+        List<GetId> getTitle = boardService.findBoardTitle("title");//title이 "title"인 데이터 조회
+        getTitle.forEach(list -> System.out.println(list.getId()));//title이 "title"인 데이터의 id 출력
+        System.out.println(getTitle.size());//전체 크기 출력
+
         return "board";
     }
 }
