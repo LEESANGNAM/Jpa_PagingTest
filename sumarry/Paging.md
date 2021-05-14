@@ -142,7 +142,8 @@ public class BoardController {
     }
 }
 ```
-+ getTop에 최신 게시글을 저장후 model에 findTop3으로 이름을 주고 view에 뿌린다   
++ getTop에 최신 게시글을 저장후 model에 findTop3으로 이름을 주고 view에 뿌린다
+### board.html
 ![데이터 3개](https://user-images.githubusercontent.com/76415175/118254584-36373e80-b4e6-11eb-94c7-dd94c08185ad.PNG)
 + thymeleaf의 반복문을 사용해 findTop3의 값을 반복하여 출력한다
 + 출력결과   
