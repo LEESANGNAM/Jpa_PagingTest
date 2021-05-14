@@ -45,7 +45,7 @@ public class BoardService {
     }
 }
 ```
-+ pageable.getPageNumber()는 현제 페이지를 알려주며 첫페이지이면 0을 그게 아니라면 현제 페이지에 1을 뺀다
++ pageable.getPageNumber()는 현재 페이지를 알려주며 첫페이지이면 0을 그게 아니라면 현재 페이지에 1을 뺀다
 + Pageable의 page는 index가 0부터 시작
 + PageRequest.of는 페이지번호,페이지당 데이터수,정렬방식,기준으로 되어있다.
 + pageable에 값을 준후 repository에 findAll(pageable)을 주면 해당 조건에 맞는 값이 들어가게된다
