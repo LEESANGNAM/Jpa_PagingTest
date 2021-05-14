@@ -13,7 +13,7 @@ class BoardServiceTest {
 
     @Test
     public void 번호_가져오기v1(){
-        List<GetId> findTitle = boardService.findBoardTitle("testTitle");
+        List<GetId> findTitle = boardService.findBoardTitle("title");
         System.out.println("============findTitleNumber============");
         findTitle.forEach(getId -> System.out.println(getId.getId()));
     }
